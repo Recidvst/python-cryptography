@@ -15,7 +15,6 @@ if len(sys.argv) > 1:
     try:
         with open(writeFile, "wb") as imageFile:
             imageFile.write(str) # write base64 encoded image to new file
-            imageFile.close()
             
     except Exception:
         sys.exit('Error: write to file failed')
