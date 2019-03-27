@@ -1,6 +1,4 @@
 import base64
-import hashlib
-import pyperclip
 import sys
 
 if len(sys.argv) > 1:
@@ -9,19 +7,18 @@ if len(sys.argv) > 1:
     
     try:
         with open(openFile, "rb") as imageFile:
-            str = base64.b64encode(imageFile.read())
-            hashStr = hashlib.sha256(str).hexdigest()
-            pyperclip.copy(hashStr)
-            print(hashStr)
+            str = base64.b64encode(imageFile.read()) # encode as base64
 
     except FileNotFoundError:
         sys.exit('Error: target file not found')
 
     try:
         with open(writeFile, "wb") as imageFile:
-            imageFile.write(str)
+            imageFile.write(str) # write base64 encoded image to new file
             imageFile.close()
             
     except Exception:
         sys.exit('Error: write to file failed')
 
+else : 
+    sys.exit('Please provide an image file as an argument')
