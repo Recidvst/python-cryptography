@@ -14,8 +14,6 @@ def hasher(string, salt) :
 def randHasher(string) : 
     return hashlib.sha512( byter(string) + os.urandom(10) ).hexdigest()
 
-print(type(os.urandom(10)))
-
 if len(sys.argv) > 1:
     openFile = sys.argv[1]
     salt = sys.argv[2] if len(sys.argv) > 2 else 'secret-salt'
